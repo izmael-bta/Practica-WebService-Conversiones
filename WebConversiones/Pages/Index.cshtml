@@ -1,0 +1,62 @@
+﻿@page
+@model WebConversiones.Pages.IndexModel
+@{
+    ViewData["Title"] = "Conversor de Unidades";
+}
+
+<div class="container mt-5">
+    <div class="card shadow mx-auto" style="max-width: 600px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Conversor de Unidades</h2>
+            <p class="mb-0">Temperatura y Longitud</p>
+        </div>
+
+        <div class="card-body">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">Tipo de conversión</label>
+
+                    <select asp-for="TipoConversion" class="form-select">
+                        <option value="celsius-fahrenheit">Celsius a Fahrenheit</option>
+                        <option value="fahrenheit-celsius">Fahrenheit a Celsius</option>
+                        <option value="celsius-kelvin">Celsius a Kelvin</option>
+                        <option value="kelvin-celsius">Kelvin a Celsius</option>
+                        <option value="metros-kilometros">Metros a Kilómetros</option>
+                        <option value="kilometros-metros">Kilómetros a Metros</option>
+                        <option value="metros-pies">Metros a Pies</option>
+                        <option value="pies-metros">Pies a Metros</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Valor a convertir</label>
+                    <input asp-for="Valor"
+                           type="text"
+                           inputmode="decimal"
+                           class="form-control"
+                           placeholder="Ejemplo: 25"
+                           required />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Convertir
+                </button>
+            </form>
+
+            @if (Model.Resultado.HasValue)
+            {
+                <div class="alert alert-success mt-4 text-center">
+                    <h5>@Model.NombreConversion</h5>
+                    <h3>@Model.Resultado.Value.ToString("F4")</h3>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Error))
+            {
+                <div class="alert alert-danger mt-4">
+                    @Model.Error
+                </div>
+            }
+        </div>
+    </div>
+</div>

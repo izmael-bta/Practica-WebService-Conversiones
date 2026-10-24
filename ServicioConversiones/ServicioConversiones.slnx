@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../ConsolaConversiones/ConsolaConversiones.csproj" />
+  <Project Path="../WebConversiones/WebConversiones.csproj" />
+  <Project Path="ServicioConversiones.csproj" />
+</Solution>
